@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import UserRegistrationAPIView, UserLogoutAPIView, activate,UserLoginApiView,UserListAPIView,UserDetailAPIView
-from allauth.account.views import confirm_email
+# from allauth.account.views import confirm_email
 from .import views
 urlpatterns = [
     path('users/register', UserRegistrationAPIView.as_view(), name='register'),
