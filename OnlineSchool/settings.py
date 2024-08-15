@@ -50,11 +50,7 @@ INSTALLED_APPS = [
 LOGIN_URL="http://127.0.0.1:5500/login.html"
 
 AUTH_USER_MODEL = 'users.CustomUser'
-REST_AUTH = {
-    'ACCOUNT_CONFIRM_EMAIL_ON_GET': True,
-    'ACCOUNT_EMAIL_VERIFICATION': 'mandatory',
-    'ACCOUNT_EMAIL_REQUIRED': True,
-}
+
 CSRF_TRUSTED_ORIGINS = [
     # 'http://127.0.0.1:5501', 
     # 'http://127.0.0.1:8000', 
@@ -82,21 +78,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5501',
 ]
 
-# MIDDLEWARE = [
-#     'corsheaders.middleware.CorsMiddleware',
-#     'django.middleware.security.SecurityMiddleware',
-#     'django.contrib.sessions.middleware.SessionMiddleware',
-#     'django.middleware.common.CommonMiddleware',
-#     'django.middleware.csrf.CsrfViewMiddleware',
-#     'django.contrib.auth.middleware.AuthenticationMiddleware',
-#     'django.contrib.messages.middleware.MessageMiddleware',
-#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-#     # 'allauth.account.middleware.AccountMiddleware',   
-    
-# ]
-
-
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -104,9 +87,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware',   
+    
 ]
+
+
+
 
 ROOT_URLCONF = 'OnlineSchool.urls'
 import os
@@ -190,7 +176,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+REST_AUTH = {
+    'ACCOUNT_CONFIRM_EMAIL_ON_GET': True,
+    'ACCOUNT_EMAIL_VERIFICATION': 'mandatory',
+    'ACCOUNT_EMAIL_REQUIRED': True,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
