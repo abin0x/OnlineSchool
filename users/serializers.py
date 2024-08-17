@@ -2,15 +2,14 @@ from rest_framework import serializers
 from .models import CustomUser
 from django.contrib.auth import authenticate
 
-
-
 class RegistrationSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(required=True)
+    user_type = serializers.ChoiceField(choices=CustomUser.USER_TYPE_CHOICES, required=True)
     profile_image = serializers.CharField(required=False, allow_null=True)
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'confirm_password', 'profile_image']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'confirm_password', 'user_type', 'profile_image']
 
     def save(self):
         username = self.validated_data['username']
@@ -19,18 +18,19 @@ class RegistrationSerializer(serializers.ModelSerializer):
         last_name = self.validated_data['last_name']
         password = self.validated_data['password']
         password2 = self.validated_data['confirm_password']
+        user_type = self.validated_data['user_type']
         profile_image = self.validated_data.get('profile_image')
 
         if password != password2:
-            raise serializers.ValidationError({'error': "Password doesn't match"})
+            raise serializers.ValidationError({'error': "Passwords don't match"})
         if CustomUser.objects.filter(email=email).exists():
-            raise serializers.ValidationError({'error': "Sorry!! This email already exists"})
+            raise serializers.ValidationError({'error': "This email is already registered"})
         
-        account = CustomUser(username=username, email=email, first_name=first_name, last_name=last_name, profile_image=profile_image)
-        account.set_password(password)
-        account.is_active = False
-        account.save()
-        return account
+        user = CustomUser(username=username, email=email, first_name=first_name, last_name=last_name, user_type=user_type, profile_image=profile_image)
+        user.set_password(password)
+        user.is_active = False  # Make sure to handle email activation
+        user.save()
+        return user
 
 
 class LoginSerializer(serializers.Serializer):
@@ -51,4 +51,4 @@ class LoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'profile_image']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name','user_type', 'profile_image']

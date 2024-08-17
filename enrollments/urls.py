@@ -1,10 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import EnrollmentViewSet
-
-router = DefaultRouter()
-router.register(r'enrollments', EnrollmentViewSet)
+# enrollments/urls.py
+from django.urls import path
+from .views import EnrollCourseAPIView, EnrollmentHistoryAPIView
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('enroll/', EnrollCourseAPIView.as_view(), name='enroll-course'),
+    path('history/', EnrollmentHistoryAPIView.as_view(), name='enrollment-history'),
 ]

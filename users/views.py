@@ -45,12 +45,18 @@ class UserRegistrationAPIView(APIView):
             print("uid",uid)
             confirm_link = f"https://onlineschool-im71.onrender.com/api/users/activate/{uid}/{token}/"
             email_subject="Confirm Your Email"
-            email_body=render_to_string('confirm_email.html',{'confirm_link':confirm_link})
-            email = EmailMultiAlternatives(email_subject , '', to=[user.email])
+            # Choose the email template based on user type
+            if user.user_type == 'teacher':
+                email_template = 'confirm_teacher_email.html'
+            else:
+                email_template = 'confirm_student_email.html'
+
+            email_body = render_to_string(email_template, {'confirm_link': confirm_link})
+            email = EmailMultiAlternatives(email_subject, '', to=[user.email])
             email.attach_alternative(email_body, "text/html")
             email.send()
-            return Response("Check your mail for confirmation")
-        return Response(serializer.errors)
+            return Response({"detail": "Check your email for confirmation"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -113,11 +119,12 @@ class UserLogoutAPIView(APIView):
 class UserListAPIView(APIView):
 
     def get(self, request):
-        users = CustomUser.objects.all()
+        # users = CustomUser.objects.all()
+        users = CustomUser.objects.filter(user_type='teacher')
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
 from rest_framework.generics import RetrieveAPIView
-
 class UserDetailAPIView(RetrieveAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
