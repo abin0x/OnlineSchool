@@ -6,7 +6,8 @@ class IsTeacherOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        return request.user.is_authenticated and request.user.is_teacher
+        # return request.user.is_authenticated and request.user.is_teacher
+        return request.user.is_authenticated and getattr(request.user, 'user_type', '') == 'teacher'
 
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
