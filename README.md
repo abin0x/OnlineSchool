@@ -90,17 +90,35 @@ python manage.py runserver
 <p>11. Open your browser and go to http://127.0.0.1:8000 to access the application</p>
 
 
-API Endpoints
+## API Endpoints
+
 The project has the following API endpoints:
 
-POST /api/register/ - User registration <br>
-POST /api/login/ - User login<br>
-GET /api/courses/ - List all courses<br>
-POST /api/courses/ - Create a new course (teachers only)<br>
-GET /api/courses/{id}/ - Get details of a specific course<br>
-PUT /api/courses/{id}/ - Update a specific course (teachers only)<br>
-DELETE /api/courses/{id}/ - Delete a specific course (teachers only)<br>
-GET /api/enrollments/ - Get enrollment history (students only)<br>
+- **POST** `/api/register/`  
+  User registration.
+
+- **POST** `/api/login/`  
+  User login.
+
+- **GET** `/api/courses/`  
+  List all courses.
+
+- **POST** `/api/courses/`  
+  Create a new course (teachers only).
+
+- **GET** `/api/courses/{id}/`  
+  Get details of a specific course.
+
+- **PUT** `/api/courses/{id}/`  
+  Update a specific course (teachers only).
+
+- **DELETE** `/api/courses/{id}/`  
+  Delete a specific course (teachers only).
+
+- **GET** `/api/enrollments/`  
+  Get enrollment history (students only).
+
+
 
 
 
