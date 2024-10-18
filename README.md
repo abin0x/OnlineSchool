@@ -4,6 +4,10 @@
 📚 **Project Name**: Online School  
 🔗 **Live Link**: [Online School](https://lnkd.in/g9_WCKjw)
 
+<p align="center"><img src="https://i.ibb.co.com/Q6vcrjq/77912647-e7bb-46fa-ab03-3155bd34d828.png" alt="project-image"></p>
+
+<h2>🚀 Demo</h2>
+
 ## Description
 Online School is an innovative e-learning platform designed to offer a wide range of courses for learners. It provides an intuitive interface for users to sign up, log in, and enroll in courses. Students can view teacher profiles and track their course enrollments while teachers can create, edit, update, or delete courses. The platform also allows users to explore detailed course information, read blogs, and check reviews. Please note that course enrollment is restricted to logged-in users to ensure a secure learning environment.
 
