@@ -25,7 +25,7 @@ Online School is an innovative e-learning platform designed to offer a wide rang
 - **Database**: SQLite3
 
 ## 🛠️ Installation Steps
-<p align="center"><img src="https://i.ibb.co.com/Q6vcrjq/77912647-e7bb-46fa-ab03-3155bd34d828.png" alt="project-image"></p>
+<p align="center"><img src="" alt="project-image"></p>
 
 <h2>🚀 Demo</h2>
 
