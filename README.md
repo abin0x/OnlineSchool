@@ -25,9 +25,69 @@ Online School is an innovative e-learning platform designed to offer a wide rang
 - **Database**: SQLite3
 
 ## 🛠️ Installation Steps
-1. Ensure Django is installed. If not, install it using:
-   ```bash
-   pip install Django
+<p align="center"><img src="https://i.ibb.co.com/Q6vcrjq/77912647-e7bb-46fa-ab03-3155bd34d828.png" alt="project-image"></p>
+
+<h2>🚀 Demo</h2>
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Python 3.x installed.</p>
+
+<p>2. Django installed. If not you can install it using</p>
+
+```
+pip install Django
+```
+
+<p>3. Clone the repository</p>
+
+```
+git clone https://github.com/abin0x/online-school.git
+```
+
+<p>4. Navigate to the project directory</p>
+
+```
+cd online-school
+```
+
+<p>5. Create a virtual environment</p>
+
+```
+python -m venv venv
+```
+
+<p>6. Activate the virtual environment</p>
+
+```
+venv\Scripts\activate
+```
+
+<p>7. Install the required packages</p>
+
+```
+pip install -r requirements.txt
+```
+
+<p>8. Run database migrations</p>
+
+```
+python manage.py migrate
+```
+
+<p>9. Create a superuser for accessing the admin panel</p>
+
+```
+python manage.py createsuperuser
+```
+
+<p>10. Start the Django development server</p>
+
+```
+python manage.py runserver
+```
+
+<p>11. Open your browser and go to http://127.0.0.1:8000 to access the application</p>
 
 
 API Endpoints
