@@ -101,3 +101,25 @@ GET /api/courses/{id}/ - Get details of a specific course<br>
 PUT /api/courses/{id}/ - Update a specific course (teachers only)<br>
 DELETE /api/courses/{id}/ - Delete a specific course (teachers only)<br>
 GET /api/enrollments/ - Get enrollment history (students only)<br>
+
+
+
+
+
+
+Model/Schemas
+The following models are used in the project:
+
+User
+username: CharField
+email: EmailField
+password: CharField
+Course
+title: CharField
+description: TextField
+instructor: ForeignKey (User)
+created_at: DateTimeField
+Enrollment
+student: ForeignKey (User)
+course: ForeignKey (Course)
+enrolled_at: DateTimeField
