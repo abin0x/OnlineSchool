@@ -24,3 +24,16 @@ Online School is an innovative e-learning platform designed to offer a wide rang
 1. Ensure Django is installed. If not, install it using:
    ```bash
    pip install Django
+
+
+API Endpoints
+The project has the following API endpoints:
+
+POST /api/register/ - User registration
+POST /api/login/ - User login
+GET /api/courses/ - List all courses
+POST /api/courses/ - Create a new course (teachers only)
+GET /api/courses/{id}/ - Get details of a specific course
+PUT /api/courses/{id}/ - Update a specific course (teachers only)
+DELETE /api/courses/{id}/ - Delete a specific course (teachers only)
+GET /api/enrollments/ - Get enrollment history (students only)
