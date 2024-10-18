@@ -106,20 +106,51 @@ GET /api/enrollments/ - Get enrollment history (students only)<br>
 
 
 
+# Project Models/Schemas
 
-Model/Schemas
-The following models are used in the project:
+This document outlines the models used in the project, detailing the attributes of each model along with their data types.
 
-User
-username: CharField
-email: EmailField
-password: CharField
-Course
-title: CharField
-description: TextField
-instructor: ForeignKey (User)
-created_at: DateTimeField
-Enrollment
-student: ForeignKey (User)
-course: ForeignKey (Course)
-enrolled_at: DateTimeField
+## Models
+
+### User
+The `User` model represents the users of the application, including both students and instructors.
+
+- **username**: `CharField`  
+  A unique identifier for the user.
+
+- **email**: `EmailField`  
+  The user's email address, used for notifications and communications.
+
+- **password**: `CharField`  
+  The user's password for authentication purposes.
+
+### Course
+The `Course` model represents the educational courses available in the platform.
+
+- **title**: `CharField`  
+  The name of the course.
+
+- **description**: `TextField`  
+  A detailed description of the course content and objectives.
+
+- **instructor**: `ForeignKey (User)`  
+  A reference to the `User` model, linking the course to its instructor.
+
+- **created_at**: `DateTimeField`  
+  The timestamp indicating when the course was created.
+
+### Enrollment
+The `Enrollment` model tracks the courses that students have enrolled in.
+
+- **student**: `ForeignKey (User)`  
+  A reference to the `User` model, linking the enrollment to the student.
+
+- **course**: `ForeignKey (Course)`  
+  A reference to the `Course` model, linking the enrollment to the course.
+
+- **enrolled_at**: `DateTimeField`  
+  The timestamp indicating when the student enrolled in the course.
+
+## Conclusion
+These models provide the foundational data structure for managing users, courses, and enrollments in the project. They facilitate interactions between students and instructors while maintaining the integrity of the application's data.
+
